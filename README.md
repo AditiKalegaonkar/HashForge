@@ -1,7 +1,7 @@
 # HashForge
 Custom hashing algorithm made by modifing bcrypt and SHA256
 
-### How actually the parameter are hashed
+### How actually the parameter are hashed?
 
 In this project, I implemented the **SHA-256** algorithm and the bcrypt algorithm from scratch. Typically, companies use fixed salt and cost parameters, which can make it easier for intruders to predict passwords. However, with HashForge, users can choose the cost and salt length themselves. These parameters are cleverly concealed within the hash.
 
