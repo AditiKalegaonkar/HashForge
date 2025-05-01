@@ -77,40 +77,41 @@ def create_message(nested_chunks):
     return final_w
 
 def formula(w):
-    h_values = create_h()
+    h = create_h()
     k = create_k()
     w_int = [int(word, 2) if isinstance(word, str) else word for word in w]
-    h = h_values.copy()
-    
+
     for i in range(64):
         E1 = rotate_right(h[4], 6) ^ rotate_right(h[4], 11) ^ rotate_right(h[4], 25)
         ch = (h[4] & h[5]) ^ (~h[4] & h[6])
         T1 = (h[7] + E1 + ch + k[i] + w_int[i]) & 0xFFFFFFFF
+        
         E0 = rotate_right(h[0], 2) ^ rotate_right(h[0], 13) ^ rotate_right(h[0], 22)
         maj = (h[0] & h[1]) ^ (h[0] & h[2]) ^ (h[1] & h[2])
         T2 = (E0 + maj) & 0xFFFFFFFF
         
-        h = [(T1 + T2) & 0xFFFFFFFF, h[0], h[1], h[2], 
-             (h[3] + T1) & 0xFFFFFFFF, h[4], h[5], h[6]]
+        h = [
+            (T1 + T2) & 0xFFFFFFFF,
+            h[0],
+            h[1],
+            h[2],
+            (h[3] + T1) & 0xFFFFFFFF,
+            h[4],
+            h[5],
+            h[6],
+        ]
     
     return h
 
-# Hash generation function
 def create_hash(final_w):
-    final_hash = ""
-    
-    for j in range(len(final_w)):
-        h_initial = create_h()
-        h_result = formula(final_w[j])
-        
-        for i in range(len(h_initial)):
-            h_initial[i] = (h_initial[i] + h_result[i]) & 0xFFFFFFFF
-        
-        # Convert to hexadecimal string
-        chunk_hash = ''.join(format(h_val, '08x') for h_val in h_initial)
-        final_hash = chunk_hash  # Overwriting each chunk hash; could be improved for multi-chunk input
-    
-    return final_hash
+    h = create_h()
+
+    for chunk_w in final_w:
+        h_chunk = formula(chunk_w)
+        for i in range(8):
+            h[i] = (h[i] + h_chunk[i]) & 0xFFFFFFFF
+
+    return ''.join(format(val, '08x') for val in h)
 
 # Main SHA-256 function
 def sha256(password):

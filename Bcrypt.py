@@ -1,6 +1,7 @@
 import SHA256
 import os
 import random
+import string
 
 class Bcrypt:
     def __init__(self, cost=12,salt_length = 0):
@@ -35,12 +36,9 @@ class Bcrypt:
 
     # Salt generation
     def generating_salt(self, salt_len=None):
-        if(salt_len == None):
-            salt_len = self.salt_length
-        
-        random.seed(int(salt_len))  
-        salt = os.urandom(int(salt_len)) 
-        return self.base64_encode(salt.decode('latin-1'))
+        random.seed(salt_len)
+        characters = string.ascii_letters + string.digits  
+        return ''.join(random.choice(characters) for _ in range(int(salt_len)))
 
     # Actual hash creation by iterating using SHA256
     def hash_creation(self, password, salt, cost):
@@ -96,11 +94,11 @@ class Bcrypt:
 
     # Decoding from hash created and verifying with new user input
     def verify(self, new_password, hashed_password):
-        ans = []
         ans, hashed = self.decode(hashed_password,len(new_password))
+        cost = int(ans[0])
         salt_len = int(ans[1])
         salt = self.generating_salt(salt_len)
-        return hashed == self.hash_creation(new_password, salt, ans[0])
+        return hashed == self.hash_creation(new_password, salt, cost)
 
 bcrypt = Bcrypt()
 password = input("Enter the password: ")
