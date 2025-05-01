@@ -22,7 +22,7 @@ Bcrypt Hash: 54f2fca2bIc7d6dbd8312661d9726bb783515f179d74405000b8839efb149e4d8M
                      salt                                                    cost
 ~~~
 
-**I** represents character for salt_length and **M** cost represents character for cost.
+**I** represents character for salt length and **M** cost represents character for cost.
 
 One limitation of this project is that the salt and cost values can only range from 0 to 63.
 
