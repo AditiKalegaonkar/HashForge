@@ -1,0 +1,171 @@
+/* ---------- Global ---------- */
+html {
+  scroll-behavior: smooth; 
+}s
+
+body {
+  background-color: #4f5e73;
+  margin: 0;
+  padding: 0;
+  font-family: "Neuton", serif;
+  color: #2a2b2c;
+  line-height: 1.6;
+}
+
+.neuton{
+  font-family: "Neuton", serif;
+}
+
+/* ---------- Navbar ---------- */
+.Navbar {
+  display: flex;
+  align-items: center;
+  background: #e7e7e7;
+  padding: 12px 20px;
+  font-size: 18px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.Navbar .logo {
+  margin-right: 20px;
+}
+
+.Navbar a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.Navbar a:hover {
+  color: #cf6b53;
+}
+
+.auth-buttons {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  background-color: #cf6b53;
+  color: white !important;
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 16px;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 120px;   /* ensures all buttons are equal */
+  height: 44px;
+  padding: 0 20px;
+
+  text-align: center;
+  line-height: 1;
+  text-decoration: none;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #b75642;
+  transform: scale(1.05);
+}
+
+.btn.small {
+  min-width: 100px;
+  height: 40px;
+  font-size: 14px;
+}
+
+/* ---------- Hero Section ---------- */
+.Hero {
+  background-color: #ffffff;
+  margin: 40px auto 80px auto;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+  align-items: center;
+  max-width: 90vw;
+  height: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.Hero img {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  max-width: 90%;
+  border-radius: 20px;
+  justify-self: end;
+}
+
+.Hero h1 {
+  font-size: 60px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.Hero p {
+  font-size: 22px;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* ---------- Content Section ---------- */
+.Content {
+  background: #fff;
+  margin: 60px auto;
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 80vw;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.Content h2 {
+  margin-bottom: 20px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* ---------- Login Section ---------- */
+.LoginBox {
+  background: #fff;
+  margin: 100px auto;
+  padding: 40px;
+  border-radius: 15px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.LoginBox h2 {
+  margin-bottom: 20px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.login-form input:focus {
+  border-color: #cf6b53;
+  box-shadow: 0 0 4px rgba(207, 107, 83, 0.5);
+  outline: none;
+}
