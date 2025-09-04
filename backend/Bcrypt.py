@@ -101,7 +101,7 @@ class Bcrypt:
         return hashed == self.hash_creation(new_password, salt, cost)
 
 bcrypt = Bcrypt()
-password = input("Enter the password: ")
+"""password = input("Enter the password: ")
 salt_len = input("Enter salt length: ")
 cost = input("Enter cost: ")
 hashed_password = bcrypt.hash_password(password,salt_len,cost)
@@ -110,4 +110,4 @@ new_pw = input("Enter for checking: ")
 if bcrypt.verify(new_pw, hashed_password):
     print("Password is correct.")
 else:
-    print("Oops! Incorrect password.")
+    print("Oops! Incorrect password.")"""
